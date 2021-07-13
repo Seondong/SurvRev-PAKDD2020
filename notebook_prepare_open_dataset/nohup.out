@@ -1,0 +1,20 @@
+  File "preparing_open_dataset.py", line 275
+    test['indices'] = test.indices.apply(lambda x: ';'.join(str(e) for e in x))
+       ^
+SyntaxError: invalid syntax
+  File "preparing_open_dataset.py", line 275
+    test['indices'] = test.indices.apply(lambda x: ';'.join(str(e) for e in x))
+       ^
+SyntaxError: invalid syntax
+  File "preparing_open_dataset.py", line 275
+    test['indices'] = test.indices.apply(lambda x: ';'.join(str(e) for e in x))
+       ^
+SyntaxError: invalid syntax
+  File "preparing_open_dataset.py", line 275
+    test['indices'] = test.indices.apply(lambda x: ';'.join(str(e) for e in x))
+       ^
+SyntaxError: invalid syntax
+  File "preparing_open_dataset.py", line 275
+    test['indices'] = test.indices.apply(lambda x: ';'.join(str(e) for e in x))
+       ^
+SyntaxError: invalid syntax

@@ -1,0 +1,259 @@
+
+
+wsdm18nsr.py
+
+# Tip learned: K.permute_dimensions and tf.reshape does not support gradient back-prop, use keras.layers.Reshape
+
+# Result by using all_data, store_C, 1 epoch, with rmse_loss
+----Final evaluation results----
+Train size: 70369, Test size: 12354
+
+------Performance Comparison (Test: First visitor case)------
+1) Censored + Uncensored
+  i) Binary classification
+    * Accuracy
+      - Accuracy: 0.7013 (Majority Voting Baseline)
+      - Accuracy: 0.3938 (PP Baseline)
+      - Accuracy: 0.3972 (HP Baseline)
+      - Accuracy: 0.7013 (ICDM'18 Baseline - Feature Restricted Ver)
+      - Accuracy: 0.6854 (Traditional SA - CPH Baseline)
+      - Accuracy: 0.3246 (Our Model)
+    * F-score
+      - F-score: 0.0 (Majority Voting Baseline)
+      - F-score: 0.4117 (PP Baseline)
+      - F-score: 0.4125 (HP Baseline)
+      - F-score: 0.0 (ICDM'18 Baseline - Feature Restricted Ver)
+      - F-score: 0.1025 (Traditional SA - CPH Baseline)
+      - F-score: 0.4634 (Our Model)
+  ii) Rank comparison
+    * C-index
+      - C-index: 0.5 (Majority Voting Baseline)
+      - C-index: 0.4996 (PP Baseline)
+      - C-index: 0.4988 (HP Baseline)
+      - C-index: 0.4709 (ICDM'18 Baseline - Feature Restricted Ver)
+      - C-index: 0.4752 (Traditional SA - CPH Baseline)
+      - C-index: 0.5 (Our Model - calculated by pred_revisit_interval)
+      - C-index: 0.5 (Our Model - calculated by pred_revisit_probability)
+2) Uncensored Only
+  i) Regression Error
+    * RMSE
+      - RMSE: 46.92 (Train Average Baseline)
+      - RMSE: 21.27 (Test Average Baseline)
+      - RMSE: 321.7 (PP Baseline)
+      - RMSE: 321.2 (HP Baseline)
+      - RMSE: 23.44 (ICDM'18 Baseline - Feature Restricted Ver)
+      - RMSE: 115.5 (Traditional SA - CPH Baseline)
+      - RMSE: 22.57 (Our Model)
+'evaluate'  619.44 ms
+
+----Final evaluation results for censored data from training set----
+Train size: 70369, Train Censored size: 36543
+
+------Performance Comparison (Train censored case)------
+1) Censored + Uncensored
+  i) Binary classification
+    * Accuracy
+      - Accuracy: 0.7571 (Majority Voting Baseline)
+      - Accuracy: 0.6374 (PP Baseline)
+      - Accuracy: 0.6578 (HP Baseline)
+      - Accuracy: 0.6557 (ICDM'18 Baseline - Feature Restricted Ver)
+      - Accuracy: 0.2437 (Traditional SA - CPH Baseline)
+      - Accuracy: 0.2429 (Our Model)
+    * F-score
+      - F-score: 0.0 (Majority Voting Baseline)
+      - F-score: 0.1864 (PP Baseline)
+      - F-score: 0.2512 (HP Baseline)
+      - F-score: 0.3995 (ICDM'18 Baseline - Feature Restricted Ver)
+      - F-score: 0.3898 (Traditional SA - CPH Baseline)
+      - F-score: 0.3908 (Our Model)
+  ii) Rank comparison
+    * C-index
+      - C-index: 0.5 (Majority Voting Baseline)
+      - C-index: 0.5909 (PP Baseline)
+      - C-index: 0.5131 (HP Baseline)
+      - C-index: 0.6444 (ICDM'18 Baseline - Feature Restricted Ver)
+      - C-index: 0.5438 (Traditional SA - CPH Baseline)
+      - C-index: 0.5151 (Our Model - calculated by pred_revisit_interval)
+      - C-index: 0.4214 (Our Model - calculated by pred_revisit_probability)
+2) Uncensored Only
+  i) Regression Error
+    * RMSE
+      - RMSE: 80.1 (Train Average Baseline)
+      - RMSE: 62.81 (Test Average Baseline)
+      - RMSE: 143.3 (PP Baseline)
+      - RMSE: 163.5 (HP Baseline)
+      - RMSE: 103.6 (ICDM'18 Baseline - Feature Restricted Ver)
+      - RMSE: 64.63 (Traditional SA - CPH Baseline)
+      - RMSE: 104.9 (Our Model)
+
+
+
+# Result by using all_data, store_C, 1 epoch, with wsdm_loss
+----Final evaluation results----
+Train size: 70369, Test size: 12354
+
+------Performance Comparison (Test: First visitor case)------
+1) Censored + Uncensored
+  i) Binary classification
+    * Accuracy
+      - Accuracy: 0.7013 (Majority Voting Baseline)
+      - Accuracy: 0.3936 (PP Baseline)
+      - Accuracy: 0.3995 (HP Baseline)
+      - Accuracy: 0.7013 (ICDM'18 Baseline - Feature Restricted Ver)
+      - Accuracy: 0.6854 (Traditional SA - CPH Baseline)
+      - Accuracy: 0.7013 (Our Model)
+/home/dmlab/ksedm1/anaconda3/envs/py36/lib/python3.6/site-packages/sklearn/metrics/classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 due to no predicted samples.
+  'precision', 'predicted', average, warn_for)
+    * F-score
+      - F-score: 0.0 (Majority Voting Baseline)
+      - F-score: 0.4065 (PP Baseline)
+      - F-score: 0.4149 (HP Baseline)
+      - F-score: 0.0 (ICDM'18 Baseline - Feature Restricted Ver)
+      - F-score: 0.1025 (Traditional SA - CPH Baseline)
+      - F-score: 0.0 (Our Model)
+  ii) Rank comparison
+    * C-index
+      - C-index: 0.5 (Majority Voting Baseline)
+      - C-index: 0.5112 (PP Baseline)
+      - C-index: 0.5007 (HP Baseline)
+      - C-index: 0.4709 (ICDM'18 Baseline - Feature Restricted Ver)
+      - C-index: 0.4752 (Traditional SA - CPH Baseline)
+      - C-index: 0.5 (Our Model - calculated by pred_revisit_interval)
+      - C-index: 0.5 (Our Model - calculated by pred_revisit_probability)
+2) Uncensored Only
+  i) Regression Error
+    * RMSE
+      - RMSE: 46.92 (Train Average Baseline)
+      - RMSE: 21.27 (Test Average Baseline)
+      - RMSE: 312.2 (PP Baseline)
+      - RMSE: 319.5 (HP Baseline)
+      - RMSE: 23.44 (ICDM'18 Baseline - Feature Restricted Ver)
+      - RMSE: 115.5 (Traditional SA - CPH Baseline)
+      - RMSE: 167.3 (Our Model)
+'evaluate'  611.93 ms
+
+----Final evaluation results for censored data from training set----
+Train size: 70369, Train Censored size: 36543
+
+------Performance Comparison (Train censored case)------
+1) Censored + Uncensored
+  i) Binary classification
+    * Accuracy
+      - Accuracy: 0.7571 (Majority Voting Baseline)
+      - Accuracy: 0.6331 (PP Baseline)
+      - Accuracy: 0.6622 (HP Baseline)
+      - Accuracy: 0.6557 (ICDM'18 Baseline - Feature Restricted Ver)
+      - Accuracy: 0.2437 (Traditional SA - CPH Baseline)
+      - Accuracy: 0.3217 (Our Model)
+    * F-score
+      - F-score: 0.0 (Majority Voting Baseline)
+      - F-score: 0.1821 (PP Baseline)
+      - F-score: 0.2535 (HP Baseline)
+      - F-score: 0.3995 (ICDM'18 Baseline - Feature Restricted Ver)
+      - F-score: 0.3898 (Traditional SA - CPH Baseline)
+      - F-score: 0.2465 (Our Model)
+  ii) Rank comparison
+    * C-index
+      - C-index: 0.5 (Majority Voting Baseline)
+      - C-index: 0.5882 (PP Baseline)
+      - C-index: 0.5113 (HP Baseline)
+      - C-index: 0.6444 (ICDM'18 Baseline - Feature Restricted Ver)
+      - C-index: 0.5438 (Traditional SA - CPH Baseline)
+      - C-index: 0.4451 (Our Model - calculated by pred_revisit_interval)
+      - C-index: 0.5221 (Our Model - calculated by pred_revisit_probability)
+2) Uncensored Only
+  i) Regression Error
+    * RMSE
+      - RMSE: 80.1 (Train Average Baseline)
+      - RMSE: 62.81 (Test Average Baseline)
+      - RMSE: 141.3 (PP Baseline)
+      - RMSE: 168.4 (HP Baseline)
+      - RMSE: 103.6 (ICDM'18 Baseline - Feature Restricted Ver)
+      - RMSE: 64.63 (Traditional SA - CPH Baseline)
+      - RMSE: 97.38 (Our Model)
+'evaluate_train_censored'  2386.10 ms
+The results of WSDM'17 model are listed as "Our Model" from the above log
+
+
+
+
+### Code blocks that might be useful later
+
+# def train_data_generator_hist_dynamic_selectlast(self):
+#     """ Data generator with previous histories - for dynamic LSTM model - Using only one last visit for each wifi_id """
+#
+#     self.df_train.drop_duplicates(subset='wifi_id', keep='last')
+#
+#     def __gen__():
+#         while True:
+#             # only retain the last visits = including all previous visits
+#             idxs = list(self.df_train.drop_duplicates(subset='wifi_id', keep='last').visit_id)
+#             idxs = self.custom_shuffle(idxs)
+#             df_train = self.df_train.set_index('visit_id')
+#             train_visits = self.train_visits.set_index('visit_id')
+#             for idx in idxs:
+#                 prev_idxs = self.find_prev_nvisits(idx, numhistories=FLAGS.max_num_histories)
+#                 assert idx == prev_idxs[-1]
+#                 output1, output2, output3, output4 = [], [], [], []
+#                 for pidx in prev_idxs[:FLAGS.max_num_histories]:
+#                     try:
+#                         visit = train_visits.loc[pidx]
+#                         label = df_train.loc[pidx]
+#                         output1 = np.append(output1, visit['visit_indices'])
+#                         output2 = np.append(output2, visit['area_indices'])
+#                         output3 = np.append(output3, [visit[ft] for ft in self.handcrafted_features])
+#                         output4 = np.append(output4, [label[ft] for ft in ['revisit_intention', 'suppress_time']])
+#                     except TypeError:
+#                         output1 = np.append(output1, [self.pad_val_visit])
+#                         output2 = np.append(output2, np.full(shape=self.num_area_thres, fill_value=self.pad_val_area))
+#                         output3 = np.append(output3, np.zeros(len(self.handcrafted_features)))
+#                         output4 = np.append(output4, np.array([-1, -1]))
+#
+#                 yield np.hstack((output1.reshape(-1, 1), output2.reshape(-1, len(visit['area_indices'])),
+#                                  output3.reshape(-1, len(self.handcrafted_features)))), output4[
+#                                                                                         -2:]  # only the last visit's labels (Last two elements)
+#
+#     gen = __gen__()
+#
+#     while True:
+#         batch = [np.stack(x) for x in zip(*(next(gen) for _ in range(FLAGS.batch_size)))]
+#         moke_data = batch[0], batch[-1]
+#         yield moke_data
+
+#
+# def test_data_generator_hist_dynamic(self):
+#     """ Data generator with previous histories - for dynamic LSTM model """
+#
+#     def __gen__():
+#         while True:
+#             idxs = list(self.df_test.visit_id)
+#             df_all = pd.concat([self.df_train, self.df_test]).set_index('visit_id')
+#             visits = self.visits.set_index('visit_id')
+#             for idx in idxs:
+#                 prev_idxs = self.find_prev_nvisits(idx, numhistories=FLAGS.max_num_histories)
+#                 assert idx == prev_idxs[-1]
+#                 output1, output2, output3, output4 = [], [], [], []
+#                 for pidx in prev_idxs[:FLAGS.max_num_histories]:
+#                     try:
+#                         visit = visits.loc[pidx]
+#                         label = df_all.loc[pidx]
+#                         output1 = np.append(output1, visit['visit_indices'])
+#                         output2 = np.append(output2, visit['area_indices'])
+#                         output3 = np.append(output3, [visit[ft] for ft in self.handcrafted_features])
+#                         output4 = np.append(output4, [label[ft] for ft in ['revisit_intention', 'suppress_time']])
+#                     except TypeError:
+#                         output1 = np.append(output1, [self.pad_val_visit])
+#                         output2 = np.append(output2, np.full(shape=self.num_area_thres, fill_value=self.pad_val_area))
+#                         output3 = np.append(output3, np.zeros(len(self.handcrafted_features)))
+#                         output4 = np.append(output4, np.array([-1, -1]))
+#
+#                 yield np.hstack((output1.reshape(-1, 1), output2.reshape(-1, len(visit['area_indices'])),
+#                                  output3.reshape(-1, len(self.handcrafted_features)))), output4[
+#                                                                                         -2:]  # only the last visit's labels (first two elements)
+#
+#     gen = __gen__()
+#
+#     while True:
+#         batch = [np.stack(x) for x in zip(*(next(gen) for _ in range(1)))]
+#         moke_data = batch[0]
+#         yield moke_data

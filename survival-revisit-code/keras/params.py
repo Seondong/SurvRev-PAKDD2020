@@ -1,0 +1,47 @@
+import tensorflow as tf
+# from absl import flags
+flags = tf.compat.v1.app.flags
+FLAGS = flags.FLAGS
+
+flags.DEFINE_bool('binary', True, 'Task type')
+flags.DEFINE_integer('max_trajectory_len', 20, 'Maximum trajectory length in each visit')
+flags.DEFINE_integer('max_num_histories', 5, 'Maximum number of histories used for RNN')
+flags.DEFINE_integer('emb_dim_uid', 32, 'Dimension of embedded user id')
+flags.DEFINE_integer('emb_dim_zone', 32, 'Dimension of embedded zone')
+flags.DEFINE_integer('batch_size', 32, 'Batch size of the model')
+flags.DEFINE_integer('train_epochs', 1, 'Number of epochs for training')
+flags.DEFINE_integer('max_steps', 2000, 'Number of steps to run trainer')
+flags.DEFINE_integer('embedding_dim', 32, 'Doc2Vec model embedding dimension: Size of area and visit embedding')
+flags.DEFINE_integer('last_timestamp_A', 1514725408, 'The last unix timestamp of Indoor/Store_A raw data')
+flags.DEFINE_integer('last_timestamp_B', 1514731520, 'The last unix timestamp of Indoor/Store_B raw data')
+flags.DEFINE_integer('last_timestamp_C', 1509715252, 'The last unix timestamp of Indoor/Store_C raw data')
+flags.DEFINE_integer('last_timestamp_D', 1510149991, 'The last unix timestamp of Indoor/Store_D raw data')
+flags.DEFINE_integer('last_timestamp_E', 1510148006, 'The last unix timestamp of Indoor/Store_E raw data')
+flags.DEFINE_float('learning_rate', 0.001, 'Initial learning rate')
+flags.DEFINE_float('c_rmse', 40.0, 'loss_weight_c_rmse')
+flags.DEFINE_float('c_ce', 40.0, 'loss_weight_c_ce')
+flags.DEFINE_float('c_rank', 40.0, 'loss_weight_c_rank')
+flags.DEFINE_float('c_d', 0.0, 'loss_weight_c_d')
+flags.DEFINE_float('c_e', 0.0, 'loss_weight_c_e')
+flags.DEFINE_float('c_nll_date', 1.0, 'loss_weight_c_nll_date')
+flags.DEFINE_float('c_nll_week', 1.0, 'loss_weight_c_nll_week')
+flags.DEFINE_float('c_nll_month', 1.0, 'loss_weight_c_nll_month')
+flags.DEFINE_float('c_nll_season', 1.0, 'loss_weight_c_nll_season')
+flags.DEFINE_float('c_nll_day', 0.0, 'loss_weight_c_nll_day')
+flags.DEFINE_string('result_directory', 'results', 'Directory to put intermediary results')
+flags.DEFINE_string('pre_release_path', '../../data_sample/indoor/', 'Pre-release path: sample data')
+flags.DEFINE_string('release_path', '../../data/indoor/', 'Release path: benchmark data')
+flags.DEFINE_string('store_id', 'store_C', 'Store ID to predict (ex. store_A, store_B, store_C, store_D, store_E')
+flags.DEFINE_integer('training_length', 180, 'Number of days for training (e.g., 60, 120, 180, 240, 300')
+flags.DEFINE_string('exp_result_dir_path', '../../results/', 'Directory path for experimental results')
+flags.DEFINE_string('all_result_dir_path', '../../results/all/', 'File path to experimental results (All)')
+flags.DEFINE_string('callback_result_dir_path', '../../results/callback/', 'File path to experimental results (Callback)')
+flags.DEFINE_string('all_result_file_path', '../../results/all/all_results.csv', 'All experimental results file path')
+flags.DEFINE_bool('all_data', False, 'Whether using all data or sample data')
+flags.DEFINE_bool('previous_visits', True, 'Whether or not using previous visits into model')
+flags.DEFINE_bool('dynamic_RNN', True, 'Whether or not using dynamic RNN' )
+flags.DEFINE_bool('multi_head', False, 'Whether or not using multi-head attention on the low-level model')
+flags.DEFINE_bool('multiprocessing', False, 'Whether or not using multiprocessing')
+
+
+

@@ -1,0 +1,14 @@
+tensorflow-gpu
+xgboost
+lightgbm
+lifelines
+gensim
+nltk
+matplotlib
+pandas
+sklearn
+seaborn
+catboost
+scipy
+tensorflow-datasets
+absl-py
